@@ -27,6 +27,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
@@ -66,6 +71,27 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpace( modifier: Modifier = Modifier) {
+    var page by remember { mutableStateOf(1) }
+    var image = when (page) {
+        1 -> R.drawable.oip
+        2 -> R.drawable.oip_1
+        else -> R.drawable.r
+    }
+    var title = when (page) {
+        1 -> R.string.artwork_title_1
+        2 -> R.string.artwork_title_2
+        else -> R.string.artwork_title_3
+    }
+    var artist = when (page) {
+        1 -> R.string.artwork_artist_1
+        2 -> R.string.artwork_artist_2
+        else -> R.string.artwork_artist_3
+    }
+    var year = when (page) {
+        1 -> R.string.artwork_year_1
+        2 -> R.string.artwork_year_2
+        else -> R.string.artwork_year_3
+    }
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -81,7 +107,7 @@ fun ArtSpace( modifier: Modifier = Modifier) {
             border = BorderStroke(32.dp, Color.White),
         ) {
             Image(
-                painterResource(R.drawable.oip),
+                painterResource(image),
                 contentDescription = "Web design",
             )
         }
@@ -102,7 +128,7 @@ fun ArtSpace( modifier: Modifier = Modifier) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = stringResource(R.string.artwork_title),
+                    text = stringResource(title),
                     fontFamily = FontFamily.SansSerif,
                     fontSize = 20.sp,
                     color = Color.DarkGray
@@ -115,7 +141,7 @@ fun ArtSpace( modifier: Modifier = Modifier) {
                                 fontWeight = FontWeight.Bold
                             )
                         )
-                        append(stringResource(R.string.artwork_artist))
+                        append(stringResource(artist))
                         pop()
                         pushStyle(
                             SpanStyle(
@@ -123,7 +149,7 @@ fun ArtSpace( modifier: Modifier = Modifier) {
                             )
                         )
                         append(" (")
-                        append(stringResource(R.string.artwork_year))
+                        append(stringResource(year))
                         append(")")
                     }
                 )
@@ -140,7 +166,13 @@ fun ArtSpace( modifier: Modifier = Modifier) {
                 .padding(16.dp)
         ) {
             Button(
-                onClick = {/* TODO */},
+                onClick = {
+                    if (page > 1) {
+                        page--
+                    } else {
+                        page = 1
+                    }
+                },
                 colors = ButtonColors(
                     containerColor = Color.DarkGray,
                     contentColor = Color.White,
@@ -152,7 +184,13 @@ fun ArtSpace( modifier: Modifier = Modifier) {
                 Text(text = "Previous")
             }
             Button(
-                onClick = {/* TODO */},
+                onClick = {
+                    if (page < 3) {
+                        page++
+                    } else {
+                        page = 1
+                    }
+                },
                 colors = ButtonColors(
                     containerColor = Color.DarkGray,
                     contentColor = Color.White,

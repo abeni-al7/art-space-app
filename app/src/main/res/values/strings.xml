@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Art Space App</string>
-    <string name="artwork_title">Still Life of Blue Rose and Other flowers</string>
-    <string name="artwork_artist">Owen Scott</string>
-    <string name="artwork_year">2021</string>
+    <string name="artwork_title_1">Still Life of Blue Rose and Other flowers</string>
+    <string name="artwork_artist_1">Owen Scott</string>
+    <string name="artwork_year_1">2021</string>
+    <string name="artwork_title_2">Qioan Gao Watercolor Painting</string>
+    <string name="artwork_artist_2">Raphael Graham</string>
+    <string name="artwork_year_2">2017</string>
+    <string name="artwork_title_3">A Bald Man Who Achieved A Lot</string>
+    <string name="artwork_artist_3">Sandro Boticelli</string>
+    <string name="artwork_year_3">2009</string>
 
 </resources>
